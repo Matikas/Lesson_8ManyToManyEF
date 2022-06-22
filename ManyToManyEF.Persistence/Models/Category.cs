@@ -14,7 +14,6 @@ namespace ManyToManyEF.Persistence.Models
 
         public Category(string name)
         {
-            Id = Guid.NewGuid();
             Name = name;
             Books = new List<Book>();
         }

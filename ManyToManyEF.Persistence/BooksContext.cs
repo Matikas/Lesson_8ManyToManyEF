@@ -15,5 +15,13 @@ namespace ManyToManyEF.Persistence
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=BooksDbManyToMany;Trusted_Connection=True;");
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Book>().Property(p => p.Id).HasDefaultValueSql("newid()");
+            modelBuilder.Entity<Category>().Property(p => p.Id).HasDefaultValueSql("newid()");
+        }
     }
 }
